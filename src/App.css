@@ -1,0 +1,59 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.cousine-regular {
+  font-family: "Cousine", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 11px;
+  color: #737373;
+}
+
+.cousine-bold {
+  font-family: "Cousine", monospace;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 12px;
+  color: #737373;
+}
+
+.cousine-bold-nav {
+  font-family: "Cousine", monospace;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 12px;
+  color: #FFFF;
+}
+
+.cousine-bold-nav:hover {
+  font-family: "Cousine", monospace;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 12px;
+  color: #FFFF;
+  text-decoration: line-through;
+}
+
+.cousine-bold-nav.active {
+  font-family: "Cousine", monospace;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 12px;
+  color: #FFFF;
+  text-decoration: line-through;
+}
+.cousine-regular-italic {
+  font-family: "Cousine", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.cousine-bold-italic {
+  font-family: "Cousine", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
