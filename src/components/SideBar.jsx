@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useColorScheme, useTheme } from "@mui/material/styles";
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
+import CloseIcon from '@mui/icons-material/Close';
 
 function SideBar(){
   const theme = useTheme();
@@ -58,8 +59,6 @@ function SideBar(){
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            // backgroundColor: theme.palette.background.default,
-            // transition: 'background-color 0.4s ease-in-out',
             
           },
         }}
@@ -67,7 +66,7 @@ function SideBar(){
         anchor="left"
       >
       <Box component="description" sx={{textAlign:'center', width:120}}>
-        <MenuIcon onClick={toggleMenu} className="menu-icon" sx={{color: theme.palette.link.default, "&:hover":{color: theme.palette.link.hover}}} />
+        {menuOpen ? <CloseIcon onClick={toggleMenu} className="menu-icon" sx={{color: theme.palette.link.default, "&:hover":{color: theme.palette.link.hover}}}/> : <MenuIcon onClick={toggleMenu} className="menu-icon" sx={{color: theme.palette.link.default, "&:hover":{color: theme.palette.link.hover}}} /> }
         <AnimatePresence mode="popLayout">
           <motion.img key={sidebarImage} initial={false} animate={{opacity:1}} exit={{opacity:0}} transition={{duration: 0.4, ease: "easeInOut"}} onMouseOver={hoverImageIn} onMouseOut={hoverImageOut} src={sidebarImage} width="120" alt="rose-image"></motion.img>
         </AnimatePresence>

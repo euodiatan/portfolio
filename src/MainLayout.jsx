@@ -9,22 +9,24 @@ import { useColorScheme } from "@mui/material/styles";
 export default function MainLayout() {
   const { mode } = useColorScheme();
   return (
-    <motion.div
-      key={mode} 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4 }}
-      style={{display: 'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}
-    >
-      <CssBaseline />
+    <>
+    <CssBaseline />
+    <Box sx={{display: 'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
       <SideBar />
+      <motion.div
+        key={mode} 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
       <Box
         component="main"
         sx={{ flexGrow: 1, p: 3, bgcolor: 'transparent' }}
       >
         <Outlet/>
       </Box>
-    </motion.div>
-    
+      </motion.div>
+    </Box>
+    </>
   );
 }
