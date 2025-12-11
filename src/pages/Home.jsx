@@ -9,7 +9,12 @@ function Home(){
    exit = {{opacity: 0}}
    transition = {{duration: 0.2}}
    >
-   <Box>
+   <Box sx={{  display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "80vh",
+    minWidth: "80vw"}}>
       <p className='cousine-bold'>welcome to my portfolio!</p>
       <p className="cousine-regular">I am an aspiring full-stack developer who is learning to create clean, fast and intuitive websites. </p>
       <p className="cousine-regular">to me, simplicity is above all else. </p>

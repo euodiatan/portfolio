@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Drawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
 import RoseImageGrey from '../assets/rose-image.png';
@@ -12,6 +13,11 @@ import { useColorScheme, useTheme } from "@mui/material/styles";
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
 import CloseIcon from '@mui/icons-material/Close';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Toolbar from '@mui/material/Toolbar';
+import AppBar from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 
 function SideBar(){
   const theme = useTheme();
@@ -22,8 +28,26 @@ function SideBar(){
 
     const location = useLocation();
     const backButtonVisible = location.pathname.includes("/post");
-
+    const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
     const drawerWidth = 300;
+    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [isClosing, setIsClosing] = React.useState(false);
+
+    const handleDrawerClose = () => {
+      setIsClosing(true);
+      setMobileOpen(false);
+      };
+
+      const handleDrawerTransitionEnd = () => {
+        setIsClosing(false);
+      };
+
+      const handleDrawerToggle = () => {
+        if (!isClosing) {
+          setMobileOpen(!mobileOpen);
+        }
+      };
+
     const [menuOpen, setMenuOpen] = useState(()=> {
       const saved = sessionStorage.getItem("menuOpen");
       return saved === "true";
@@ -47,24 +71,8 @@ function SideBar(){
       }));
     }
 
-    return (
-        <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            
-          },
-        }}
-        variant="permanent"
-        anchor="left"
-      >
+    const drawer = (
+      <>
       <Box component="description" sx={{textAlign:'center', width:120}}>
         {menuOpen ? <CloseIcon onClick={toggleMenu} className="menu-icon" sx={{color: theme.palette.link.default, "&:hover":{color: theme.palette.link.hover}}}/> : <MenuIcon onClick={toggleMenu} className="menu-icon" sx={{color: theme.palette.link.default, "&:hover":{color: theme.palette.link.hover}}} /> }
         <AnimatePresence mode="popLayout">
@@ -100,8 +108,73 @@ function SideBar(){
         animate={{ opacity: 1 }}
         exit={{ opacity: 0}}
         transition={{ duration: 0.4, ease: "easeInOut" }}> {mode === 'light' ? <NightsStayIcon className="mode-toggle" onClick={()=>setMode('dark')} /> : <LightModeIcon className="mode-toggle" onClick={()=>setMode('light')} />} </motion.div> }
-      </AnimatePresence>
-      </Drawer>
+        </AnimatePresence>
+      </>
+    );
+
+    return (
+      <>
+       {!isDesktop && (
+      <AppBar position="fixed" elevation={0} sx={{backgroundColor:"transparent"}}>
+        <Toolbar>
+          <IconButton
+            color="black"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    )}
+        {isDesktop ? (<Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            
+          },
+        }}
+        open
+        variant="permanent"
+        anchor="left"
+      >
+        {drawer}
+      </Drawer> ) : ( <Drawer
+          variant="temporary"
+          open={mobileOpen}
+          onTransitionEnd={handleDrawerTransitionEnd}
+          onClose={handleDrawerClose}
+          sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            
+          },
+        }}
+          slotProps={{
+            root: {
+              keepMounted: true, 
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>)}
+
+      </>
     );
 }
 

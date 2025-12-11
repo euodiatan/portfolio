@@ -9,7 +9,12 @@ function About(){
    exit = {{opacity: 0}}
    transition = {{duration: 0.5}}
    >
-   <Box sx={{mb: 10}}>
+   <Box sx={{  display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "80vh",
+    minWidth: "80vw"}}>
       <p className='cousine-bold'>about me</p>
       <p className="cousine-regular">dia / 26 / female</p>
       <p className="cousine-regular">I graduated from Singapore Management University in 2024, majoring in Information Systems. </p>

@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import SideBar from './components/SideBar';
 import { motion } from "framer-motion";
 import { useColorScheme } from "@mui/material/styles";
+import { Toolbar } from '@mui/material';
 
 
 export default function MainLayout() {
@@ -11,7 +12,7 @@ export default function MainLayout() {
   return (
     <>
     <CssBaseline />
-    <Box sx={{display: 'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
+    <Box sx={{display: 'flex'}}>
       <SideBar />
       <motion.div
         key={mode} 
@@ -23,6 +24,7 @@ export default function MainLayout() {
         component="main"
         sx={{ flexGrow: 1, p: 3, bgcolor: 'transparent' }}
       >
+        <Toolbar/>
         <Outlet/>
       </Box>
       </motion.div>
