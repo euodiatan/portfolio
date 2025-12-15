@@ -1,17 +1,25 @@
 import { useParams } from "react-router-dom";
 import ProjectCard from '../components/Card';
 import { Box } from "@mui/material";
-import Asteroid1 from "../assets/asteroid-tracker-bigger.png"
-import Asteroid2 from "../assets/asteroid-tracker2.png"
-import HeatMap from "../assets/heatmap2.jpg"
-import KunyahWebsite from "../assets/kunyahwebsite.png"
-import KunyahMobile from "../assets/kunyahordervideo.mp4"
+import Asteroid1 from "../assets/asteroid-tracker-bigger.png";
+import Asteroid2 from "../assets/asteroid-tracker2.png";
+import HeatMap from "../assets/heatmap2.jpg";
+import KunyahWebsite from "../assets/kunyahwebsite.png";
+import KunyahMobile from "../assets/kunyahordervideo.mp4";
 import CalculatorVideo1 from "../assets/uiuxcalculatorvideo.mp4";
 import CalculatorVideo2 from "../assets/DSPO_UIUX_Calculator.mp4";
 import BookNotes1 from "../assets/book-notes-bigger.png";
 import BookNotes2 from "../assets/book-notes2.png";
 import BookNotes3 from "../assets/book-notes3.png";
-import BlogPost from "../assets/blog-bigger.png"
+import BlogPost from "../assets/blog-bigger.png";
+import Bank0 from "../assets/bank0.png";
+import Bank1 from "../assets/bank1.png";
+import Bank2 from "../assets/bank2.png";
+import Bank3 from "../assets/bank3.png";
+import Bank4 from "../assets/bank4.png";
+import Bank5 from "../assets/bank5.png";
+import Bank6 from "../assets/bank6.png";
+import Bank7 from "../assets/bank7.png";
 
 function Project(){
     const { slug } = useParams();
@@ -55,12 +63,17 @@ function Project(){
             desc:"For fun, I designed and developed a website that allows you to create, edit and delete blog posts. This was my first project when I learned how to program with EJS.",
             link: "https://blog-website-2gbl.onrender.com/"
         },
+        bankpeerapp: {
+            title: "Peer to Peer Bank Transaction Mobile App",
+            images: [Bank0, Bank1, Bank2, Bank3, Bank4, Bank5, Bank6, Bank7],
+            desc:"For a take-home interview assignment, I designed a P2P bank transaction mobile application for users that want an easy and reliable way to send money, that will inform them of the process at every step of the user journey. ",
+        }
 
 
     };
 
     return (
-        <Box sx={{display:'flex', flexDirection:'row', justifyContent:'center', maxHeight:800}}>
+        <Box sx={{width: "100%", maxWidth: 1200, mx: "auto" }}>
             <ProjectCard 
                 title={projectData[slug].title} 
                 name={slug}

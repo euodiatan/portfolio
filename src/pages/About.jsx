@@ -1,7 +1,10 @@
 import Box from '@mui/material/Box';
 import {motion} from 'framer-motion';
+import { Link } from '@mui/material';
+import {useTheme} from '@mui/material/styles';
 
 function About(){
+   const theme = useTheme();
    return (
    <motion.div
    initial = {{opacity:0}}
@@ -19,6 +22,10 @@ function About(){
       <p className="cousine-regular">dia / 26 / female</p>
       <p className="cousine-regular">I graduated from Singapore Management University in 2024, majoring in Information Systems. </p>
       <p className="cousine-regular">in my free time, you can find me reading, cooking or powerlifting.</p>
+      <p className='cousine-bold' style={{marginTop:50}}>contact me</p>
+      <p className="cousine-regular">if you're interested to collaborate, you can reach me at:</p>
+      <p className="cousine-regular">euodiatan1999@gmail.com</p>
+      <Link href="https://www.linkedin.com/in/euodia-t-460b1a173/" sx={{ color: theme.palette.link.default, "&:hover": {color: theme.palette.link.hover}, fontFamily: 'Cousine', textDecoration: 'underline', fontSize: 12}}>My LinkedIn</Link>
    </Box>
    {/* <Box sx={{mb: 10}}>
       <p className="cousine-bold">my leadership/community experiences</p>

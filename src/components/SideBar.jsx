@@ -32,7 +32,6 @@ function SideBar(){
     const drawerWidth = 300;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);
-
     const handleDrawerClose = () => {
       setIsClosing(true);
       setMobileOpen(false);
@@ -45,6 +44,7 @@ function SideBar(){
       const handleDrawerToggle = () => {
         if (!isClosing) {
           setMobileOpen(!mobileOpen);
+          setMenuOpen(true)
         }
       };
 
@@ -70,6 +70,7 @@ function SideBar(){
         return newState;
       }));
     }
+
 
     const drawer = (
       <>
